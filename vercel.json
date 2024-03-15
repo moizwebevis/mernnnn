@@ -1,5 +1,15 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "/client/build/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/api/**",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -7,7 +17,8 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/client/build/$1"
     }
-  ]
+  ],
+  "outputDirectory": "client/build"
 }
